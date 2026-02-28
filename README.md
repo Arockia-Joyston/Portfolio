@@ -2,8 +2,6 @@
 
 A nature-themed personal portfolio website built with pure **HTML**, **CSS**, and **Vanilla JavaScript** — no frameworks, no dependencies.
 
-## 🔗 Live Demo
-> Deploy on [GitHub Pages](https://pages.github.com/) or [Render](https://render.com/) for free!
 
 ---
 
