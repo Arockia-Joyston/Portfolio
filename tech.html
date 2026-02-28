@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Arockia Joyston — BE Computer Science Engineering Student, Python Developer, Flask & MySQL learner."/>
+  <meta name="author" content="Arockia Joyston"/>
+  <title>Arockia Joyston — Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+
+  <!-- Grain Texture Overlay -->
+  <div class="grain"></div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="progress"></div>
+
+  <!-- Background Canvas (Floating Particles) -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ══════════════════════════════════════
+       NAV
+  ══════════════════════════════════════ -->
+  <nav>
+    <div class="nav-logo">🌿 <span>Arockia</span> Joyston</div>
+    <div class="nav-center">
+      <a href="#about"    class="nav-pill">About</a>
+      <a href="#skills"   class="nav-pill">Skills</a>
+      <a href="#projects" class="nav-pill">Projects</a>
+      <a href="#journey"  class="nav-pill">Journey</a>
+      <a href="#contact"  class="nav-pill">Contact</a>
+    </div>
+    <a href="mailto:arockiajoyston@gmail.com" class="nav-cta">Hire Me</a>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <section id="hero">
+
+    <!-- Botanical decorative SVGs -->
+    <svg class="hero-botanical" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="300" cy="300" r="280" stroke="#4a8c5c" stroke-width=".5"/>
+      <circle cx="300" cy="300" r="220" stroke="#4a8c5c" stroke-width=".5" stroke-dasharray="4 8"/>
+      <circle cx="300" cy="300" r="160" stroke="#4a8c5c" stroke-width=".5"/>
+      <line x1="300" y1="20" x2="300" y2="580" stroke="#4a8c5c" stroke-width=".5" stroke-dasharray="3 6"/>
+      <line x1="20"  y1="300" x2="580" y2="300" stroke="#4a8c5c" stroke-width=".5" stroke-dasharray="3 6"/>
+      <path d="M300 300 Q400 200 500 300 Q400 400 300 300" stroke="#4a8c5c" stroke-width="1" fill="none"/>
+      <path d="M300 300 Q200 200 100 300 Q200 400 300 300" stroke="#4a8c5c" stroke-width="1" fill="none"/>
+      <path d="M300 300 Q400 400 300 500 Q200 400 300 300" stroke="#4a8c5c" stroke-width="1" fill="none"/>
+      <path d="M300 300 Q400 200 300 100 Q200 200 300 300" stroke="#4a8c5c" stroke-width="1" fill="none"/>
+    </svg>
+
+    <svg class="hero-botanical-2" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="150" cy="150" r="140" stroke="#4a8c5c" stroke-width=".8"/>
+      <path d="M150 10 C150 10 200 80 150 150 C100 80 150 10 150 10Z" fill="#2d6a4f" opacity=".3"/>
+      <path d="M10 150 C10 150 80 200 150 150 C80 100 10 150 10 150Z"  fill="#2d6a4f" opacity=".3"/>
+    </svg>
+
+    <div class="wrap">
+      <div class="hero-inner">
+
+        <!-- Left: Text -->
+        <div class="hero-left">
+          <div class="hero-tag">Software Developer</div>
+          <h1 class="hero-name">
+            <span class="accent">Arockia</span>
+            <span class="lastname">Joyston</span>
+          </h1>
+          <div class="hero-divider"></div>
+          <p class="hero-desc">
+            BE Computer Science Engineering student, 2nd year.<br>
+            Building from roots up — Python, Flask, Linux, MySQL,<br>
+            and sharpening DSA skills on LeetCode every day.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-solid">View My Work</a>
+            <a href="#contact"  class="btn btn-ghost">Get In Touch</a>
+          </div>
+        </div>
+
+        <!-- Right: Terminal -->
+        <div class="hero-right">
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="dot dot-r"></div>
+              <div class="dot dot-y"></div>
+              <div class="dot dot-g"></div>
+              <span class="terminal-title">arockia@dev ~ portfolio.py</span>
+            </div>
+            <div class="terminal-body" id="terminal-body">
+              <!-- Filled by script.js -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span class="scroll-label">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       MARQUEE
+  ══════════════════════════════════════ -->
+  <div class="marquee-section" aria-hidden="true">
+    <div class="marquee-track" id="marquee"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       ABOUT
+  ══════════════════════════════════════ -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-eyebrow reveal">About Me</div>
+      <h2 class="sec-title reveal reveal-delay-1">
+        Rooted in <em>curiosity,</em><br>growing through code
+      </h2>
+
+      <div class="about-grid">
+
+        <!-- Left: Portrait -->
+        <div class="about-left reveal">
+          <div class="about-portrait">
+            <div class="portrait-frame">
+              <img src="joy.jpg" alt="Arockia Joyston"/>
+              <div class="portrait-badge">
+                <span class="year">2nd</span>
+                Year
+              </div>
+            </div>
+            <div class="portrait-accent"></div>
+          </div>
+
+          <div class="about-stats">
+            <div class="stat-box">
+              <span class="stat-num">5+</span>
+              <span class="stat-lbl">Technologies</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">∞</span>
+              <span class="stat-lbl">Curiosity</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num" id="leet-count">50+</span>
+              <span class="stat-lbl">LeetCode</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">1</span>
+              <span class="stat-lbl">Goal: Master Dev</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Content -->
+        <div class="about-content">
+          <div class="highlight-quote reveal">
+            "Every expert was once a beginner who refused to quit."
+          </div>
+
+          <p class="about-text reveal reveal-delay-1">
+            Hey, I'm <strong>Arockia Joyston</strong> — a passionate 2nd-year BE Computer Science Engineering
+            student who believes that great software, like nature, grows from well-laid foundations.
+          </p>
+          <p class="about-text reveal reveal-delay-2">
+            My journey started with <strong>Python</strong>, where I fell in love with the logic and elegance
+            of programming. Now I'm expanding my ecosystem — learning <strong>Linux</strong> for system-level
+            understanding, <strong>HTML & CSS</strong> for beautiful interfaces, <strong>Flask & MySQL</strong>
+            for full-stack applications, and deploying projects on <strong>Render</strong> to reach the world.
+          </p>
+          <p class="about-text reveal reveal-delay-3">
+            Every day I push myself on <strong>LeetCode</strong>, grinding through DSA problems to build the
+            algorithmic thinking every great developer needs. I'm not just learning tools — I'm learning how to think.
+          </p>
+
+          <div class="about-details reveal reveal-delay-4">
+            <div class="detail-row">
+              <span class="detail-label">Degree</span>
+              <span class="detail-value">BE Computer Science Engg.</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Year</span>
+              <span class="detail-value">2nd Year (Current)</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Focus Areas</span>
+              <span class="detail-value">Web Dev · Backend · DSA</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Location</span>
+              <span class="detail-value">Tamil Nadu, India 🇮🇳</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Email</span>
+              <span class="detail-value">arockiajoyston@gmail.com</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Status</span>
+              <span class="detail-value">🟢 Open to opportunities</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem;" class="reveal">
+            <a href="https://github.com/Arockia-Joyston"            target="_blank" class="btn btn-solid" style="margin-right:.8rem">GitHub Profile</a>
+            <a href="https://www.linkedin.com/in/arockiajoystonm/"  target="_blank" class="btn btn-ghost">LinkedIn</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SKILLS
+  ══════════════════════════════════════ -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="skills-header">
+        <div>
+          <div class="sec-eyebrow reveal" style="color:var(--fern)">Tech Stack</div>
+          <h2 class="sec-title light reveal reveal-delay-1">My growing <em>ecosystem</em></h2>
+        </div>
+      </div>
+
+      <div class="skills-layout">
+
+        <div class="skill-block featured reveal">
+          <span class="skill-icon">🐍</span>
+          <div class="skill-name">Python — Core Language</div>
+          <div class="skill-desc">My first love. Built scripts, automations, and logic-heavy programs. Comfortable with OOP, file I/O, and Pythonic patterns.</div>
+          <div class="skill-bar-area">
+            <div class="sbar-row"><span>Python</span><span>75%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" data-w="75"></div></div>
+          </div>
+          <div class="skill-pills">
+            <span class="pill">Python 3</span>
+            <span class="pill">OOP</span>
+            <span class="pill">Functions</span>
+            <span class="pill">File I/O</span>
+            <span class="pill">Modules</span>
+            <span class="pill">Scripting</span>
+          </div>
+        </div>
+
+        <div class="skill-block reveal reveal-delay-1">
+          <span class="skill-icon">🌐</span>
+          <div class="skill-name">Frontend</div>
+          <div class="skill-desc">Crafting responsive, modern interfaces.</div>
+          <div class="skill-bar-area">
+            <div class="sbar-row"><span>HTML/CSS</span><span>65%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" data-w="65"></div></div>
+          </div>
+          <div class="skill-pills">
+            <span class="pill">HTML5</span>
+            <span class="pill">CSS3</span>
+            <span class="pill">Flexbox</span>
+            <span class="pill">Grid</span>
+          </div>
+        </div>
+
+        <div class="skill-block reveal reveal-delay-2">
+          <span class="skill-icon">⚙️</span>
+          <div class="skill-name">Backend</div>
+          <div class="skill-desc">Building full-stack web applications.</div>
+          <div class="skill-bar-area">
+            <div class="sbar-row"><span>Flask</span><span>45%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" data-w="45"></div></div>
+          </div>
+          <div class="skill-pills">
+            <span class="pill">Flask</span>
+            <span class="pill">REST APIs</span>
+            <span class="pill">Routing</span>
+          </div>
+        </div>
+
+        <div class="skill-block reveal">
+          <span class="skill-icon">🗄️</span>
+          <div class="skill-name">Database</div>
+          <div class="skill-desc">Structuring and querying relational data.</div>
+          <div class="skill-bar-area">
+            <div class="sbar-row"><span>MySQL</span><span>50%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" data-w="50"></div></div>
+          </div>
+          <div class="skill-pills">
+            <span class="pill">MySQL</span>
+            <span class="pill">SQL Queries</span>
+            <span class="pill">CRUD</span>
+          </div>
+        </div>
+
+        <div class="skill-block reveal reveal-delay-1">
+          <span class="skill-icon">🐧</span>
+          <div class="skill-name">Linux & Cloud</div>
+          <div class="skill-desc">Learning OS fundamentals and cloud deployment.</div>
+          <div class="skill-bar-area">
+            <div class="sbar-row"><span>Linux</span><span>40%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" data-w="40"></div></div>
+            <div class="sbar-row"><span>Render</span><span>35%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" data-w="35"></div></div>
+          </div>
+          <div class="skill-pills">
+            <span class="pill">Linux CLI</span>
+            <span class="pill">Render</span>
+            <span class="pill">Git</span>
+            <span class="pill">GitHub</span>
+          </div>
+        </div>
+
+        <div class="skill-block reveal reveal-delay-2">
+          <span class="skill-icon">🧩</span>
+          <div class="skill-name">DSA & Problem Solving</div>
+          <div class="skill-desc">Daily grind on LeetCode building algorithmic thinking.</div>
+          <div class="skill-bar-area">
+            <div class="sbar-row"><span>DSA</span><span>55%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" data-w="55"></div></div>
+          </div>
+          <div class="skill-pills">
+            <span class="pill">Arrays</span>
+            <span class="pill">Strings</span>
+            <span class="pill">Linked Lists</span>
+            <span class="pill">Trees</span>
+            <span class="pill">LeetCode</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       PROJECTS
+  ══════════════════════════════════════ -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="projects-header">
+        <div>
+          <div class="sec-eyebrow reveal">Projects</div>
+          <h2 class="sec-title reveal reveal-delay-1">Things I've <em>built</em> &amp; grown</h2>
+        </div>
+        <a href="https://github.com/Arockia-Joyston" target="_blank" class="btn btn-ghost reveal">All Projects →</a>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="proj-card reveal">
+          <div class="proj-visual">
+            <div class="proj-visual-bg proj-v1"></div>
+            <div class="proj-visual-icon">🐍</div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-meta">
+              <span class="proj-type">Automation</span>
+              <span class="proj-status">Complete</span>
+            </div>
+            <div class="proj-title">Python Automation Scripts</div>
+            <div class="proj-desc">Collection of CLI tools and automation scripts built to solve real-world tasks — file management, data parsing, and more.</div>
+            <div class="proj-stack">
+              <span class="stack-chip">Python</span>
+              <span class="stack-chip">CLI</span>
+              <span class="stack-chip">OS Module</span>
+            </div>
+            <a href="https://github.com/Arockia-Joyston" target="_blank" class="proj-link">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal reveal-delay-1">
+          <div class="proj-visual">
+            <div class="proj-visual-bg proj-v2"></div>
+            <div class="proj-visual-icon">🌐</div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-meta">
+              <span class="proj-type">Full Stack</span>
+              <span class="proj-status">In Progress</span>
+            </div>
+            <div class="proj-title">Flask Web Application</div>
+            <div class="proj-desc">Full-stack web app with Flask backend, MySQL database, responsive HTML/CSS frontend, and live deployment on Render cloud.</div>
+            <div class="proj-stack">
+              <span class="stack-chip">Flask</span>
+              <span class="stack-chip">MySQL</span>
+              <span class="stack-chip">HTML/CSS</span>
+              <span class="stack-chip">Render</span>
+            </div>
+            <a href="https://github.com/Arockia-Joyston" target="_blank" class="proj-link">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-visual">
+            <div class="proj-visual-bg proj-v3"></div>
+            <div class="proj-visual-icon">🧠</div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-meta">
+              <span class="proj-type">Algorithms</span>
+              <span class="proj-status">Ongoing</span>
+            </div>
+            <div class="proj-title">LeetCode Solutions</div>
+            <div class="proj-desc">Curated DSA solutions organized by topic with clean, well-commented Python code.</div>
+            <div class="proj-stack">
+              <span class="stack-chip">Python</span>
+              <span class="stack-chip">DSA</span>
+            </div>
+            <a href="https://github.com/Arockia-Joyston" target="_blank" class="proj-link">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal reveal-delay-1">
+          <div class="proj-visual">
+            <div class="proj-visual-bg proj-v4"></div>
+            <div class="proj-visual-icon">🐧</div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-meta">
+              <span class="proj-type">DevOps</span>
+              <span class="proj-status">Learning</span>
+            </div>
+            <div class="proj-title">Linux Experiments</div>
+            <div class="proj-desc">Shell scripts and Linux command explorations to master the OS fundamentals.</div>
+            <div class="proj-stack">
+              <span class="stack-chip">Linux</span>
+              <span class="stack-chip">Bash</span>
+            </div>
+            <a href="https://github.com/Arockia-Joyston" target="_blank" class="proj-link">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal reveal-delay-2">
+          <div class="proj-visual">
+            <div class="proj-visual-bg proj-v5"></div>
+            <div class="proj-visual-icon">📊</div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-meta">
+              <span class="proj-type">Mini Project</span>
+              <span class="proj-status">Complete</span>
+            </div>
+            <div class="proj-title">Student Utility Tools</div>
+            <div class="proj-desc">Python programs for academic use: grade calculators, attendance trackers, and study planners.</div>
+            <div class="proj-stack">
+              <span class="stack-chip">Python</span>
+              <span class="stack-chip">CSV</span>
+              <span class="stack-chip">Math</span>
+            </div>
+            <a href="https://github.com/Arockia-Joyston" target="_blank" class="proj-link">View on GitHub</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       JOURNEY / TIMELINE
+  ══════════════════════════════════════ -->
+  <section id="journey">
+    <div class="wrap">
+      <div class="sec-eyebrow reveal" style="color:var(--fern)">Learning Path</div>
+      <h2 class="sec-title light reveal reveal-delay-1">The journey <em>so far</em></h2>
+
+      <div class="timeline" id="timeline">
+
+        <div class="tl-item current">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2024 — Present</div>
+          <div class="tl-title">BE Computer Science Engineering</div>
+          <div class="tl-sub">2nd Year · Active</div>
+          <div class="tl-tags">
+            <span class="tl-tag">Full Stack Web</span>
+            <span class="tl-tag">Flask</span>
+            <span class="tl-tag">MySQL</span>
+            <span class="tl-tag">Linux</span>
+            <span class="tl-tag">Render</span>
+            <span class="tl-tag">DSA</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2023 — 2024</div>
+          <div class="tl-title">Python & Core Programming</div>
+          <div class="tl-sub">1st Year · Foundations</div>
+          <div class="tl-tags">
+            <span class="tl-tag">Python</span>
+            <span class="tl-tag">OOP</span>
+            <span class="tl-tag">Data Structures</span>
+            <span class="tl-tag">Algorithms</span>
+            <span class="tl-tag">Git</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2023</div>
+          <div class="tl-title">The First "Hello, World!"</div>
+          <div class="tl-sub">The spark that started it all</div>
+          <div class="tl-tags">
+            <span class="tl-tag">Python</span>
+            <span class="tl-tag">Problem Solving</span>
+            <span class="tl-tag">Logic Building</span>
+          </div>
+        </div>
+
+        <div class="tl-item" style="opacity:.4;">
+          <div class="tl-dot" style="border-style:dashed"></div>
+          <div class="tl-date">Future</div>
+          <div class="tl-title">React · Node.js · Cloud · ML</div>
+          <div class="tl-sub">What's next on the roadmap 🌱</div>
+          <div class="tl-tags">
+            <span class="tl-tag">React</span>
+            <span class="tl-tag">Node.js</span>
+            <span class="tl-tag">Docker</span>
+            <span class="tl-tag">AWS</span>
+            <span class="tl-tag">Machine Learning</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CONTACT
+  ══════════════════════════════════════ -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-inner">
+
+        <!-- Left: Info -->
+        <div>
+          <div class="sec-eyebrow reveal" style="color:var(--fern)">Contact</div>
+          <div class="contact-tagline reveal reveal-delay-1">
+            Let's plant a <em>seed</em> and grow something great together.
+          </div>
+
+          <div class="contact-links reveal reveal-delay-2">
+            <a href="mailto:arockiajoyston@gmail.com" class="clink">
+              <div class="clink-ico">📧</div>
+              <div class="clink-text">
+                <span class="clink-label">Email</span>
+                <span class="clink-val">arockiajoyston@gmail.com</span>
+              </div>
+              <span class="clink-arrow">→</span>
+            </a>
+            <a href="https://github.com/Arockia-Joyston" target="_blank" class="clink">
+              <div class="clink-ico">🐙</div>
+              <div class="clink-text">
+                <span class="clink-label">GitHub</span>
+                <span class="clink-val">github.com/Arockia-Joyston</span>
+              </div>
+              <span class="clink-arrow">→</span>
+            </a>
+            <a href="https://www.linkedin.com/in/arockiajoystonm/" target="_blank" class="clink">
+              <div class="clink-ico">💼</div>
+              <div class="clink-text">
+                <span class="clink-label">LinkedIn</span>
+                <span class="clink-val">linkedin.com/in/arockiajoystonm</span>
+              </div>
+              <span class="clink-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="contact-form reveal reveal-delay-2">
+          <div class="form-title">Send a message</div>
+          <div class="fg">
+            <label>Your Name</label>
+            <input type="text" placeholder="e.g. Rahul Kumar"/>
+          </div>
+          <div class="fg">
+            <label>Email Address</label>
+            <input type="email" placeholder="you@example.com"/>
+          </div>
+          <div class="fg">
+            <label>Subject</label>
+            <input type="text" placeholder="Internship / Collab / Just saying hi"/>
+          </div>
+          <div class="fg">
+            <label>Message</label>
+            <textarea placeholder="Hey Arockia, I'd love to connect because..."></textarea>
+          </div>
+          <a href="mailto:arockiajoyston@gmail.com">
+            <button class="form-btn">Send Message 🌿</button>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer>
+    <span class="footer-copy">
+      Crafted with 🌿 by <span>Arockia Joyston</span> &middot; 2025 &middot; Growing every day
+    </span>
+    <div class="footer-links">
+      <a href="mailto:arockiajoyston@gmail.com">Email</a>
+      <a href="https://github.com/Arockia-Joyston" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/arockiajoystonm/" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
+</body>
+</html>
